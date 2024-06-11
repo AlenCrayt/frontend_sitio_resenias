@@ -1,10 +1,12 @@
 <script>
   import BarraSuperior from "./barra_superior.svelte";
+  import FormularioResenias from "./formulario_resenias.svelte";
   import ListaResenias from "./lista_resenias.svelte";
 </script>
 
 <div>
   <BarraSuperior />
+  <FormularioResenias />
   <ListaResenias />
 </div>
 

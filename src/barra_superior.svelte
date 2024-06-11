@@ -1,9 +1,5 @@
-<script lang="ts">
-</script>
-
 <nav>
   <h1>Reseñas</h1>
-  <button>Subi tu Reseña</button>
 </nav>
 
 <style lang="scss">
@@ -13,7 +9,7 @@
 
   nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     border-bottom: 1px solid black;
     background-color: $brown;
@@ -22,14 +18,5 @@
       font-size: 32px;
       margin: 6px;
     }
-  }
-
-  button {
-    font-size: 20px;
-    border: none;
-    background-color: $light_brown;
-    border-radius: 25px;
-    color: white;
-    padding: 8px;
   }
 </style>
