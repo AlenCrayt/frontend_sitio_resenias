@@ -1,5 +1,16 @@
 <nav>
   <h1>Reseñas</h1>
+  <div class="barra_busqueda">
+    <input type="search" />
+    <img src="src\assets\icono_busqueda.svg" alt="imagen no disponible" />
+  </div>
+  <li>
+    <h2>Usuario</h2>
+    <ul>
+      <li class="opciones_cuenta">Registrarse</li>
+      <li class="opciones_cuenta">Ingresar</li>
+    </ul>
+  </li>
 </nav>
 
 <style lang="scss">
@@ -9,14 +20,57 @@
 
   nav {
     display: flex;
-    justify-content: start;
-    align-items: center;
-    border-bottom: 1px solid black;
-    background-color: $brown;
-    color: $very_light_brown;
+    justify-content: space-between;
+    align-items: flex-start;
+    color: black;
+    margin-top: 8px;
+
     h1 {
       font-size: 32px;
-      margin: 6px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .barra_busqueda {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      input {
+        border: none;
+        border-radius: 10px;
+        width: 300px;
+        height: 30px;
+      }
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin-right: 15px;
+      padding: 0;
+    }
+
+    h2 {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      visibility: hidden;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      border-radius: 5px;
+      background-color: $light_brown;
+      li {
+        margin: 0;
+        padding: 5px;
+      }
+    }
+
+    li:hover ul {
+      visibility: visible;
     }
   }
 </style>

@@ -13,7 +13,7 @@
   <div></div>
   <div class="subida">
     <details>
-      <summary>Subi tu reseña</summary>
+      <summary>Subí tu reseña</summary>
       <form method="post" on:submit|preventDefault={manejar_subida}>
         <label for="titulo">Titulo:</label>
         <input type="text" name="titulo" id="titulo" />
