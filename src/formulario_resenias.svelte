@@ -2,7 +2,7 @@
   const manejar_subida = async (evento: Event) => {
     const formulario = evento.target as HTMLFormElement;
     const datos_a_enviar = new FormData(formulario);
-    fetch("http://192.168.1.12:8080/agregar_resenias", {
+    fetch("http://192.168.1.13:8080/resenias-nuevas", {
       method: "POST",
       body: datos_a_enviar,
     });

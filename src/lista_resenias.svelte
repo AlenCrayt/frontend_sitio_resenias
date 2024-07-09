@@ -2,7 +2,7 @@
   let lista_libros: Array<any> = [];
 
   const obtener_json = async () => {
-    const datos = await fetch("http://192.168.1.12:8080/leer_resenias");
+    const datos = await fetch("http://192.168.1.13:8080/resenias-generales");
     if (datos.ok) {
       return datos.json();
     }
