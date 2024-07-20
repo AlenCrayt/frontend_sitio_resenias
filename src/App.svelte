@@ -1,10 +1,28 @@
-<script>
+<script lang="ts">
   import BarraSuperior from "./barra_superior.svelte";
   import ListaResenias from "./lista_resenias.svelte";
+
+  let termino_busqueda_global = "";
+  $: {
+    if (termino_busqueda_global != "") {
+      fetch(
+        `http://192.168.1.13:8080/resenias-especificas?buscar-titulo=${termino_busqueda_global}`,
+        {
+          method: "GET",
+        }
+      )
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        });
+    }
+  }
 </script>
 
 <div>
-  <BarraSuperior />
+  <BarraSuperior bind:busca_texto={termino_busqueda_global} />
   <ListaResenias />
 </div>
 
