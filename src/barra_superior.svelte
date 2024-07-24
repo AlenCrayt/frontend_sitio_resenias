@@ -15,11 +15,7 @@
     </button>
   </div>
   <li>
-    <h2>Usuario</h2>
-    <ul>
-      <li class="opciones_cuenta">Registrarse</li>
-      <li class="opciones_cuenta">Ingresar</li>
-    </ul>
+    <h2>Subir Reseña</h2>
   </li>
 </nav>
 
@@ -71,23 +67,6 @@
     h2 {
       margin: 0;
       padding: 0;
-    }
-
-    ul {
-      visibility: hidden;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      border-radius: 5px;
-      background-color: $light_brown;
-      li {
-        margin: 0;
-        padding: 5px;
-      }
-    }
-
-    li:hover ul {
-      visibility: visible;
     }
   }
 </style>
