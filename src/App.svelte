@@ -1,6 +1,7 @@
 <script lang="ts">
   import BarraSuperior from "./barra_superior.svelte";
   import ListaResenias from "./lista_resenias.svelte";
+  import FormularioResenias from "./formulario_resenias.svelte";
 
   let termino_busqueda_global = "";
   $: {
@@ -23,6 +24,7 @@
 
 <div>
   <BarraSuperior bind:busca_texto={termino_busqueda_global} />
+  <FormularioResenias />
   <ListaResenias />
 </div>
 

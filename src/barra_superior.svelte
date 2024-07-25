@@ -14,9 +14,7 @@
       <img src="src\assets\icono_busqueda.svg" alt="imagen no disponible" />
     </button>
   </div>
-  <li>
-    <h2>Subir Reseña</h2>
-  </li>
+  <button id="subida_resenia">Subí tu Reseña</button>
 </nav>
 
 <style lang="scss">
@@ -56,17 +54,14 @@
       margin-left: 5px;
     }
 
-    li {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      margin-right: 15px;
-      padding: 0;
-    }
-
-    h2 {
-      margin: 0;
-      padding: 0;
+    #subida_resenia {
+      color: $very_light_brown;
+      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      font-size: 140%;
+      padding-right: 1%;
+      padding-left: 1%;
+      padding-bottom: 0.2%;
+      padding-top: 0.2%;
     }
   }
 </style>
