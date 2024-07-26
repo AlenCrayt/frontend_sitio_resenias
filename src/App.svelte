@@ -3,6 +3,7 @@
   import ListaResenias from "./lista_resenias.svelte";
   import FormularioResenias from "./formulario_resenias.svelte";
 
+  let panel_subida_es_visible = false;
   let termino_busqueda_global = "";
   $: {
     if (termino_busqueda_global != "") {
@@ -23,8 +24,13 @@
 </script>
 
 <div>
-  <BarraSuperior bind:busca_texto={termino_busqueda_global} />
-  <FormularioResenias />
+  <BarraSuperior
+    bind:busca_texto={termino_busqueda_global}
+    bind:ver_panel={panel_subida_es_visible}
+  />
+  {#if panel_subida_es_visible}
+    <FormularioResenias bind:es_visible={panel_subida_es_visible} />
+  {/if}
   <ListaResenias />
 </div>
 

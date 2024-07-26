@@ -1,6 +1,13 @@
 <script lang="ts">
   //Los métodos de busca y leída de la base de datos van a estar disponibles a todos los visitantes de la pagina no solo usuarios registrados
+  export let ver_panel = false;
   export let busca_texto = "";
+
+  function mostrar_panel_subida() {
+    if (ver_panel == false) {
+      ver_panel = true;
+    }
+  }
   const buscar = () => {
     busca_texto = document.querySelector("input")?.value as string;
   };
@@ -14,7 +21,9 @@
       <img src="src\assets\icono_busqueda.svg" alt="imagen no disponible" />
     </button>
   </div>
-  <button id="subida_resenia">Subí tu Reseña</button>
+  <button id="subida_resenia" on:click={mostrar_panel_subida}
+    >Subí tu Reseña</button
+  >
 </nav>
 
 <style lang="scss">
