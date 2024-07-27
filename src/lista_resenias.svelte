@@ -12,6 +12,7 @@
   result.then((data) => {
     lista_libros = data;
   });
+  //Hay que agregar al código la posibilidad de poder manejar el error de contactar al servidor y no recibir ningún dato
 </script>
 
 <main>

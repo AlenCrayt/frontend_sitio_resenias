@@ -3,11 +3,26 @@
 
   export let es_visible = false;
   let panel_info_copiado_url: HTMLDivElement;
-  /*let panel_subida: HTMLElement;*/
+  const resenia = {
+    titulo_libro: "",
+    link_portada: "",
+    resenia_parrafo: "",
+  };
 
   onMount(() => {
     panel_info_copiado_url.style.visibility = "hidden";
   });
+
+  function subir_datos(evento: Event) {
+    evento.preventDefault();
+    fetch("http://192.168.1.13:8080/resenias-nuevas", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(resenia),
+    });
+  }
 
   function cierre() {
     if (es_visible) {
@@ -34,9 +49,9 @@
       </button>
     </div>
     <h1>Subí tu Reseña</h1>
-    <form>
+    <form on:submit={subir_datos}>
       <label for="titulo">Titulo del Libro:</label>
-      <input id="titulo" type="text" />
+      <input id="titulo" type="text" bind:value={resenia.titulo_libro} />
       <div id="linea_horizontal">
         <label for="link_imagen"
           >Link a una imagen de la portada del libro:</label
@@ -48,10 +63,15 @@
           alt="imagen no disponible"
         />
       </div>
-      <input id="link_imagen" type="text" />
+      <input id="link_imagen" type="text" bind:value={resenia.link_portada} />
       <label for="resenia">Tu Reseña:</label>
-      <textarea id="resenia" cols="120" rows="10"></textarea>
-      <button>Subir Reseña</button>
+      <textarea
+        id="resenia"
+        cols="120"
+        rows="10"
+        bind:value={resenia.resenia_parrafo}
+      ></textarea>
+      <button type="submit">Subir Reseña</button>
     </form>
   </article>
   <p bind:this={panel_info_copiado_url}>
@@ -72,10 +92,23 @@
     align-items: center;
   }
 
+  @keyframes moverse_arriba {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
   #contenedor {
     @include columna_flex();
+    position: absolute;
     flex-direction: row;
     margin-left: 14%;
+    animation: moverse_arriba 1s;
   }
 
   article {
