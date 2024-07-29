@@ -1,30 +1,45 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   let lista_libros: Array<any> = [];
 
-  const obtener_json = async () => {
-    const datos = await fetch("http://192.168.1.13:8080/resenias-generales");
-    if (datos.ok) {
-      return datos.json();
+  onMount(async () => {
+    try {
+      const datos_resenias = await fetch(
+        "http://192.168.1.13:8080/resenias-generales"
+      );
+      if (!datos_resenias.ok) {
+        throw new Error(`Hubo un error de HTTP: ${datos_resenias.status}`);
+      }
+      let reserva_temporal = await datos_resenias.json();
+      if (
+        reserva_temporal === null ||
+        reserva_temporal === undefined ||
+        reserva_temporal.length === 0
+      ) {
+        throw new Error("La respuesta esta vacía de datos o es null");
+      }
+      lista_libros = reserva_temporal;
+    } catch {
+      console.log("Ocurrió un error al recibir los datos del servidor");
     }
-  };
-
-  const result = obtener_json();
-  result.then((data) => {
-    lista_libros = data;
   });
-  //Hay que agregar al código la posibilidad de poder manejar el error de contactar al servidor y no recibir ningún dato
 </script>
 
 <main>
-  {#each lista_libros as libro}
-    <article>
-      <div>
-        <h2>{libro.titulo}</h2>
-        <p>{libro.parrafo}</p>
-      </div>
-      <img src={libro.link_imagen} alt="Imagen no disponible" />
-    </article>
-  {/each}
+  {#if lista_libros.length > 0}
+    {#each lista_libros as libro}
+      <article>
+        <div>
+          <h2>{libro.titulo}</h2>
+          <p>{libro.parrafo}</p>
+        </div>
+        <img src={libro.link_imagen} alt="Imagen no disponible" />
+      </article>
+    {/each}
+  {:else}
+    <h1>No hay Reseñas todavía!</h1>
+  {/if}
 </main>
 
 <style lang="scss">
@@ -62,5 +77,9 @@
     width: 175px;
     height: 262px;
     margin: 15px;
+  }
+
+  h1 {
+    color: black;
   }
 </style>
