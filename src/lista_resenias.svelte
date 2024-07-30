@@ -1,16 +1,16 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
+  let cantidad_por_pagina = 5;
+  let contador_guardado = localStorage.getItem("contador") as string;
+  let contador_paginas = JSON.parse(contador_guardado) as number;
   export let lista_libros: Array<any> = [];
-  let lista_libros_reves: Array<any> = [];
-  $: {
-    lista_libros_reves = [...lista_libros].reverse();
-  }
 
   onMount(async () => {
+    window.scrollTo(0, 0);
     try {
       const datos_resenias = await fetch(
-        "http://192.168.1.13:8080/resenias-generales"
+        `http://192.168.1.13:8080/resenias-generales?indice=${contador_paginas}`
       );
       if (!datos_resenias.ok) {
         throw new Error(`Hubo un error de HTTP: ${datos_resenias.status}`);
@@ -28,11 +28,40 @@
       console.log("Ocurrió un error al recibir los datos del servidor");
     }
   });
+
+  function pasa_de_pagina(retroceder: boolean) {
+    if (retroceder) {
+      contador_paginas -= cantidad_por_pagina;
+    } else {
+      contador_paginas += cantidad_por_pagina;
+    }
+    fetch(
+      `http://192.168.1.13:8080/resenias-generales?indice=${contador_paginas}`,
+      {
+        method: "GET",
+      }
+    )
+      .then((response) => {
+        if (response.status == 404) {
+          if (retroceder) {
+            contador_paginas += cantidad_por_pagina;
+          } else {
+            contador_paginas -= cantidad_por_pagina;
+          }
+        }
+        return response.json();
+      })
+      .then((data) => {
+        lista_libros = data;
+        localStorage.setItem("contador", JSON.stringify(contador_paginas));
+        location.reload();
+      });
+  }
 </script>
 
 <main>
   {#if lista_libros.length > 0}
-    {#each lista_libros_reves as libro}
+    {#each lista_libros as libro}
       <article>
         <div>
           <h2>{libro.titulo_libro}</h2>
@@ -41,6 +70,22 @@
         <img src={libro.link_portada} alt="Imagen no disponible" />
       </article>
     {/each}
+    <div id="contenedor_flex">
+      {#if contador_paginas >= cantidad_por_pagina}
+        <button id="chevrones" on:click={() => pasa_de_pagina(true)}
+          ><img
+            src="src/assets/chevron_izquierda.svg"
+            alt="Imagen no disponible"
+          /></button
+        >
+      {/if}
+      <button id="chevrones" on:click={() => pasa_de_pagina(false)}
+        ><img
+          src="src/assets/chevron_derecha.svg"
+          alt="Imagen no disponible"
+        /></button
+      >
+    </div>
   {:else}
     <h1>No hay Reseñas todavía!</h1>
   {/if}
@@ -81,6 +126,32 @@
     width: 175px;
     height: 262px;
     margin: 15px;
+  }
+
+  #contenedor_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #chevrones {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    padding: 0%;
+    margin-left: 10%;
+    background-color: $brown;
+    border: none;
+    border-radius: 100%;
+    height: 65px;
+    width: 80px;
+    img {
+      width: 100%;
+      height: 100%;
+      margin: 0%;
+      padding: 0%;
+    }
   }
 
   h1 {

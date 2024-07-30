@@ -48,6 +48,7 @@
       body: JSON.stringify(resenia),
     });
     alert("Subido exitosamente");
+    window.scrollTo(0, 0);
     location.reload();
   }
 
