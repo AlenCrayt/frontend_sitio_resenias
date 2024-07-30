@@ -1,7 +1,11 @@
 <script lang="ts">
   import { onMount } from "svelte";
 
-  let lista_libros: Array<any> = [];
+  export let lista_libros: Array<any> = [];
+  let lista_libros_reves: Array<any> = [];
+  $: {
+    lista_libros_reves = [...lista_libros].reverse();
+  }
 
   onMount(async () => {
     try {
@@ -28,13 +32,13 @@
 
 <main>
   {#if lista_libros.length > 0}
-    {#each lista_libros as libro}
+    {#each lista_libros_reves as libro}
       <article>
         <div>
-          <h2>{libro.titulo}</h2>
-          <p>{libro.parrafo}</p>
+          <h2>{libro.titulo_libro}</h2>
+          <p>{libro.resenia_parrafo}</p>
         </div>
-        <img src={libro.link_imagen} alt="Imagen no disponible" />
+        <img src={libro.link_portada} alt="Imagen no disponible" />
       </article>
     {/each}
   {:else}

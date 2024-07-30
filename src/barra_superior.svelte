@@ -11,10 +11,11 @@
   const buscar = () => {
     busca_texto = document.querySelector("input")?.value as string;
   };
+  //Agregar antes de construir la version de producción agregar un <a> que dirige a la URL inicial de la pagina
 </script>
 
 <nav>
-  <h1>Reseñas</h1>
+  <a href="http://192.168.1.13:8080/">Reseñas</a>
   <div class="barra_busqueda">
     <input type="search" />
     <button on:click={buscar}>
@@ -38,10 +39,12 @@
     color: black;
     margin-top: 8px;
 
-    h1 {
+    a {
       font-size: 32px;
       margin: 0;
       padding: 0;
+      text-decoration: none;
+      color: black;
     }
 
     .barra_busqueda {

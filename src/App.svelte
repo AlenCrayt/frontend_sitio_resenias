@@ -5,6 +5,7 @@
 
   let panel_subida_es_visible = false;
   let termino_busqueda_global = "";
+  let resultado_de_busqueda: Array<any> = [];
   $: {
     if (termino_busqueda_global != "") {
       fetch(
@@ -17,7 +18,7 @@
           return response.json();
         })
         .then((data) => {
-          console.log(data);
+          resultado_de_busqueda = data;
         });
     }
   }
@@ -31,7 +32,7 @@
   {#if panel_subida_es_visible}
     <FormularioResenias bind:es_visible={panel_subida_es_visible} />
   {/if}
-  <ListaResenias />
+  <ListaResenias bind:lista_libros={resultado_de_busqueda} />
 </div>
 
 <style lang="scss">
