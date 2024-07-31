@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
 
   let cantidad_por_pagina = 5;
-  let contador_guardado = localStorage.getItem("contador") as string;
+  let contador_guardado = sessionStorage.getItem("contador") as string;
   let contador_paginas = JSON.parse(contador_guardado) as number;
   export let lista_libros: Array<any> = [];
 
@@ -53,8 +53,8 @@
       })
       .then((data) => {
         lista_libros = data;
-        localStorage.setItem("contador", JSON.stringify(contador_paginas));
-        location.reload();
+        sessionStorage.setItem("contador", JSON.stringify(contador_paginas));
+        window.scrollTo(0, 0);
       });
   }
 </script>
@@ -108,7 +108,7 @@
     display: grid;
     grid-template-columns: 2;
     grid-template-rows: 1;
-    background-color: $brown;
+    background-color: #a6c6f6;
     border-radius: 20px;
     margin: 15px;
   }
@@ -118,6 +118,12 @@
     grid-row: 1;
     margin-left: 20px;
     margin-right: 20px;
+  }
+
+  h2 {
+    color: rgb(50, 50, 50);
+    font-size: 200%;
+    margin: 0%;
   }
 
   img {
@@ -138,10 +144,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: rgb(50, 50, 50);
     padding: 0%;
     margin-left: 10%;
-    background-color: $brown;
+    background-color: #a6c6f6;
     border: none;
     border-radius: 100%;
     height: 65px;
@@ -155,6 +161,6 @@
   }
 
   h1 {
-    color: black;
+    color: rgb(50, 50, 50);
   }
 </style>

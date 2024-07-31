@@ -39,8 +39,9 @@
   :global(body) {
     margin: 0;
     padding: 0;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-    color: #d7c0ae;
-    background-color: #b7c4cf;
+    font-family: sans-serif;
+    color: rgb(50, 50, 50);
+    background-image: url(https://i.pinimg.com/originals/bf/af/59/bfaf59c73409c1aea2457219b2b3c64f.jpg);
+    background-size: contain;
   }
 </style>

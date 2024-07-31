@@ -1,5 +1,4 @@
 <script lang="ts">
-  //Los métodos de busca y leída de la base de datos van a estar disponibles a todos los visitantes de la pagina no solo usuarios registrados
   export let ver_panel = false;
   export let busca_texto = "";
 
@@ -36,7 +35,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    color: black;
+    color: rgb(50, 50, 50);
     margin-top: 8px;
 
     a {
@@ -44,7 +43,7 @@
       margin: 0;
       padding: 0;
       text-decoration: none;
-      color: black;
+      color: rgb(50, 50, 50);
     }
 
     .barra_busqueda {
@@ -62,13 +61,12 @@
     button {
       border: none;
       border-radius: 25px;
-      background-color: $brown;
+      background-color: #a6c6f6;
       margin-left: 5px;
     }
 
     #subida_resenia {
-      color: $very_light_brown;
-      font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+      color: rgb(50, 50, 50);
       font-size: 140%;
       padding-right: 1%;
       padding-left: 1%;

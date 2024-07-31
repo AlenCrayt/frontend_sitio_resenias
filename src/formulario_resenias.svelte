@@ -106,7 +106,7 @@
         <label for="resenia">Tu Reseña:</label>
         {#if mal_resenia}
           <p id="datos_invalidos">
-            La reseña debe tener entre 500 y 2000 caracteres
+            La reseña debe tener entre 500 y 2500 caracteres
           </p>
         {/if}
       </div>
@@ -252,7 +252,7 @@
 
   p {
     background-color: $brown;
-    color: $light_brown;
+    color: rgb(50, 50, 50);
     border-radius: 10px;
     width: 20%;
     height: 50%;
@@ -269,7 +269,6 @@
   }
 
   button {
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     font-size: 130%;
     margin: 2%;
     padding: 3%;
