@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Chevron_right from "svelte-google-materialdesign-icons/Chevron_right.svelte";
+  import Chevron_left from "svelte-google-materialdesign-icons/Chevron_left.svelte";
 
   let cantidad_por_pagina = 5;
   let contador_guardado = sessionStorage.getItem("contador") as string;
@@ -73,17 +75,11 @@
     <div id="contenedor_flex">
       {#if contador_paginas >= cantidad_por_pagina}
         <button id="chevrones" on:click={() => pasa_de_pagina(true)}
-          ><img
-            src="src/assets/chevron_izquierda.svg"
-            alt="Imagen no disponible"
-          /></button
+          ><Chevron_left size={"60"} /></button
         >
       {/if}
       <button id="chevrones" on:click={() => pasa_de_pagina(false)}
-        ><img
-          src="src/assets/chevron_derecha.svg"
-          alt="Imagen no disponible"
-        /></button
+        ><Chevron_right size={"60"} /></button
       >
     </div>
   {:else}
@@ -92,10 +88,6 @@
 </main>
 
 <style lang="scss">
-  $brown: #967e76;
-  $light_brown: #d7c0ae;
-  $very_light_brown: #eee3cb;
-
   main {
     display: flex;
     flex-direction: column;
@@ -108,9 +100,10 @@
     display: grid;
     grid-template-columns: 2;
     grid-template-rows: 1;
-    background-color: #a6c6f6;
+    background-color: #b2a3ff;
     border-radius: 20px;
     margin: 15px;
+    box-shadow: 5px 5px rgb(50, 50, 50);
   }
 
   div {
@@ -121,7 +114,6 @@
   }
 
   h2 {
-    color: rgb(50, 50, 50);
     font-size: 200%;
     margin: 0%;
   }
@@ -144,20 +136,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: rgb(50, 50, 50);
     padding: 0%;
     margin-left: 10%;
-    background-color: #a6c6f6;
+    background-color: #b2a3ff;
     border: none;
     border-radius: 100%;
     height: 65px;
     width: 80px;
-    img {
-      width: 100%;
-      height: 100%;
-      margin: 0%;
-      padding: 0%;
-    }
   }
 
   h1 {

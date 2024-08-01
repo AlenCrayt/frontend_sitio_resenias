@@ -1,5 +1,7 @@
 <script lang="ts">
   import { onMount } from "svelte";
+  import Close from "svelte-google-materialdesign-icons/Close.svelte";
+  import Question_mark from "svelte-google-materialdesign-icons/Question_mark.svelte";
 
   const patron_url = /^(https?:\/\/)?([\w\-]+(\.[\w\-]+)+\/?)\S*$/;
   let mal_titulo = false;
@@ -73,7 +75,7 @@
   <article>
     <div id="boton_cierre">
       <button on:click={cierre}>
-        <img src="src/assets/cerrar.svg" alt="imagen no disponible" />
+        <Close size={"36"} />
       </button>
     </div>
     <h1>Subí tu Reseña</h1>
@@ -94,12 +96,12 @@
         {#if mal_link}
           <p id="link_invalido">Link Invalido</p>
         {/if}
-        <img
-          on:mouseenter={sobre_circulo_info}
-          on:mouseleave={fuera_de_circulo_info}
-          src="src/assets/simbolo_pregunta.svg"
-          alt="imagen no disponible"
-        />
+        <div>
+          <Question_mark
+            on:mouseenter={sobre_circulo_info}
+            on:mouseleave={fuera_de_circulo_info}
+          />
+        </div>
       </div>
       <input id="link_imagen" type="text" bind:value={resenia.link_portada} />
       <div id="linea_horizontal">
@@ -186,17 +188,12 @@
     margin-top: 0;
     margin-bottom: 0;
     button {
+      border-radius: 50px;
       margin-top: 0;
       margin-bottom: 0;
       background: none;
       width: 9%;
       height: 0.1%;
-      img {
-        border-radius: 50px;
-        padding: 50%;
-        width: 150%;
-        height: 150%;
-      }
     }
   }
 
@@ -240,14 +237,10 @@
     margin: 0%;
     width: 100%;
     height: 10%;
-  }
-
-  img {
-    background-color: $light_brown;
-    border-radius: 10px;
-    padding: 0.5%;
-    width: 4%;
-    height: 4%;
+    div {
+      background-color: $light_brown;
+      border-radius: 25px;
+    }
   }
 
   p {

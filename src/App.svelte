@@ -42,6 +42,6 @@
     font-family: sans-serif;
     color: rgb(50, 50, 50);
     background-image: url(https://i.pinimg.com/originals/bf/af/59/bfaf59c73409c1aea2457219b2b3c64f.jpg);
-    background-size: contain;
+    background-size: cover;
   }
 </style>

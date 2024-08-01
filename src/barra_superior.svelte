@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Search from "svelte-google-materialdesign-icons/Search.svelte";
   export let ver_panel = false;
   export let busca_texto = "";
 
@@ -18,7 +19,7 @@
   <div class="barra_busqueda">
     <input type="search" />
     <button on:click={buscar}>
-      <img src="src\assets\icono_busqueda.svg" alt="imagen no disponible" />
+      <Search />
     </button>
   </div>
   <button id="subida_resenia" on:click={mostrar_panel_subida}
@@ -27,23 +28,18 @@
 </nav>
 
 <style lang="scss">
-  $brown: #967e76;
-  $light_brown: #d7c0ae;
-  $very_light_brown: #eee3cb;
-
   nav {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    color: rgb(50, 50, 50);
     margin-top: 8px;
 
     a {
-      font-size: 32px;
+      color: rgb(50, 50, 50);
+      font-size: 300%;
       margin: 0;
       padding: 0;
       text-decoration: none;
-      color: rgb(50, 50, 50);
     }
 
     .barra_busqueda {
@@ -61,12 +57,12 @@
     button {
       border: none;
       border-radius: 25px;
-      background-color: #a6c6f6;
+      color: rgb(50, 50, 50);
+      background-color: #b2a3ff;
       margin-left: 5px;
     }
 
     #subida_resenia {
-      color: rgb(50, 50, 50);
       font-size: 140%;
       padding-right: 1%;
       padding-left: 1%;
