@@ -132,6 +132,36 @@
   $light_brown: #d7c0ae;
   $very_light_brown: #eee3cb;
 
+  @media (max-height: 1366px) {
+    #contenedor {
+      margin-top: 12%;
+      height: 30%;
+    }
+  }
+
+  @media (min-width: 650px) and (max-width: 900px) {
+    article {
+      margin-bottom: 10%;
+      margin-right: 60%;
+      form {
+        flex-direction: row;
+        font-size: 8px;
+        width: 350px;
+        height: 80px;
+      }
+    }
+  }
+
+  @media (max-width: 650px) {
+    #contenedor {
+      width: 240%;
+    }
+    article {
+      margin-right: 50%;
+      margin-bottom: 10%;
+    }
+  }
+
   @mixin columna_flex {
     display: flex;
     flex-direction: column;
@@ -163,6 +193,8 @@
     @include columna_flex();
     position: fixed;
     flex-direction: row;
+    height: 50%;
+    margin-top: 8%;
     margin-left: 14%;
     animation: moverse_arriba 1s;
   }
@@ -170,8 +202,8 @@
   article {
     @include columna_flex();
     border: 1px black;
-    border-radius: 5px;
     background-color: $brown;
+    border-radius: 5px;
     width: 40%;
     padding-top: 0;
     padding-bottom: 0;
@@ -248,7 +280,7 @@
     color: rgb(50, 50, 50);
     border-radius: 10px;
     width: 20%;
-    height: 50%;
+    height: 30%;
     padding: 0.5%;
     margin-bottom: 18%;
     margin-left: 1%;

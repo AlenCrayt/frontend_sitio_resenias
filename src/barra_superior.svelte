@@ -28,6 +28,15 @@
 </nav>
 
 <style lang="scss">
+  @media (max-width: 650px) {
+    nav {
+      flex-direction: column;
+    }
+    #subida_resenia {
+      margin-top: 3%;
+    }
+  }
+
   nav {
     display: flex;
     justify-content: space-between;
