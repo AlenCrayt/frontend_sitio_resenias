@@ -11,7 +11,6 @@
   const buscar = () => {
     busca_texto = document.querySelector("input")?.value as string;
   };
-  //Agregar antes de construir la version de producción agregar un <a> que dirige a la URL inicial de la pagina
 </script>
 
 <nav>

@@ -68,7 +68,6 @@
   function fuera_de_circulo_info() {
     panel_info_copiado_url.style.visibility = "hidden";
   }
-  //Sacar una captura de pantalla haciendo click derecho en una imagen de una portada para mostrar un ejemplo de como copiar la URL de una imagen
 </script>
 
 <div id="contenedor">
@@ -131,36 +130,6 @@
   $brown: #967e76;
   $light_brown: #d7c0ae;
   $very_light_brown: #eee3cb;
-
-  @media (max-height: 1366px) {
-    #contenedor {
-      margin-top: 12%;
-      height: 30%;
-    }
-  }
-
-  @media (min-width: 650px) and (max-width: 900px) {
-    article {
-      margin-bottom: 10%;
-      margin-right: 60%;
-      form {
-        flex-direction: row;
-        font-size: 8px;
-        width: 350px;
-        height: 80px;
-      }
-    }
-  }
-
-  @media (max-width: 650px) {
-    #contenedor {
-      width: 240%;
-    }
-    article {
-      margin-right: 50%;
-      margin-bottom: 10%;
-    }
-  }
 
   @mixin columna_flex {
     display: flex;
@@ -301,5 +270,37 @@
     border: none;
     border-radius: 15px;
     background-color: $light_brown;
+  }
+
+  @media (min-width: 651px) and (max-width: 1000px) and (max-height: 650px) {
+    #contenedor {
+      margin-top: 5%;
+      font-size: 8px;
+      article {
+        form {
+          textarea {
+            height: 80px;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+
+  @media (min-width: 901px) and (max-width: 1366px) and (min-height: 640px) {
+    #contenedor {
+      margin-top: 12%;
+      height: 30%;
+    }
+  }
+
+  @media (max-width: 650px) {
+    #contenedor {
+      width: 240%;
+    }
+    article {
+      margin-right: 50%;
+      margin-bottom: 10%;
+    }
   }
 </style>
